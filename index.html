@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <link rel="stylesheet" href="styles.css">
+  <title>Onity</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="centered">ONITY-HT24</h1>
+    <div>
+      <label for="input-recorder">Nr. Gravadora:</label>
+      <input id="input-recorder">
+    </div>
+    <div>
+      <label for="input-port">Porta:</label>
+      <select id="input-port"></select>
+    </div>
+    <div class="centered">
+      <button id="btn-connect">Abrir Porta</button>
+      <button id="btn-disconnect">Fechar Porta</button>
+    </div>
+    <div class="box-log">
+      <p id="communication-log"></p>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script src="serialPort.js"></script>
