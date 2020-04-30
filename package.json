@@ -1,19 +1,56 @@
 {
-  "name": "onity",
+  "name": "integracao-onity",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-  },
+  "description": "Um aplicativo para estabalecer comunicação com a gravadora Onity HT24",
+  "main": "main.js",
+  "keywords": [
+    "onity",
+    "recorder"
+  ],
   "author": "Guilherme Fernandes <guilherme-fernandes-1@hotmail.com>",
   "license": "ISC",
+  "scripts": {
+    "test": "concurrently \"npm start\" \"npm run cypress:run\"",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "node ./server/bin/www",
+    "debug": "nodemon ./server/bin/www",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "electron": "electron main.js",
+    "electron:rebuild": "./node_modules/.bin/electron-rebuild.cmd",
+    "dist:win32": "rollup -c && electron-builder --win --ia32",
+    "dist:win64": "rollup -c && electron-builder --win --x64"
+  },
   "dependencies": {
-    "electron": "^8.2.2",
-    "serialport": "^8.0.7"
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0",
+    "serialport": "^8.0.7",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2",
+    "ws": "^7.2.3"
   },
   "devDependencies": {
-    "electron-rebuild": "^1.10.1"
+    "@rollup/plugin-commonjs": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "concurrently": "^5.2.0",
+    "cypress": "^4.4.1",
+    "electron": "^8.2.4",
+    "electron-builder": "^22.6.0",
+    "electron-rebuild": "^1.10.1",
+    "mocha": "^7.1.2",
+    "nodemon": "^1.18.11",
+    "rollup": "^1.20.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "svelte": "^3.0.0"
+  },
+  "builder": {
+    "win": {
+      "icon": "public/favicon.ico"
+    }
   }
 }
